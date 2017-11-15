@@ -1,4 +1,7 @@
-#Author: Krzysztof Nowak
+# Author: Krzysztof Nowak
+
+result = -1.00657107000000 * Float64(10)^-11
+
 function sum_upto(x, y, T)
     s = 0
     for i = 1:5
@@ -56,14 +59,23 @@ y32 = Float32[1486.2497, 878366.9879, -22.37492, 4773714.647, 0.000185049]
 x64 = Float64[2.718281828, -3.141592654, 1.414213562, 0.577215664, 0.301029995]
 y64 = Float64[1486.2497, 878366.9879, -22.37492, 4773714.647, 0.000185049]
 
-println("Float32")
-println(sum_upto(x32, y32,Float32))
-println(sum_downto(x32, y32, Float32))
-println(sum_desc(x32, y32, Float32))
-println(sum_asc(x32, y32, Float32))
+a_32 = sum_upto(x32, y32, Float32)
+a_64 = sum_upto(x64, y64, Float64)
+b_32 = sum_downto(x32, y32, Float32)
+b_64 = sum_downto(x64, y64, Float64)
+c_32 = sum_desc(x32, y32, Float32)
+c_64 = sum_desc(x64, y64, Float64)
+d_32 = sum_asc(x32, y32, Float32)
+d_64 = sum_asc(x64, y64, Float64)
 
-println("Float64")
-println(sum_upto(x64, y64,Float64))
-println(sum_downto(x64, y64, Float64))
-println(sum_desc(x64, y64, Float64))
-println(sum_asc(x64, y64, Float64))
+println("\\hline")
+println("Algorytm & Float32 & Float64 & Float32 błąd wzg. & Float64 błąd wzg. \\\\")
+println("\\hline")
+println("a. & \$", a_32, "\$ & \$", a_64, "\$ & \$", abs(result - a_32) / abs(result), "\$ & \$", abs(result - a_64) / abs(result), "\$ \\\\")
+println("\\hline")
+println("b. & \$", b_32, "\$ & \$", b_64, "\$ & \$", abs(result - b_32) / abs(result), "\$ & \$", abs(result - b_64) / abs(result), "\$ \\\\")
+println("\\hline")
+println("c. & \$", c_32, "\$ & \$", c_64, "\$ & \$", abs(result - c_32) / abs(result), "\$ & \$", abs(result - c_64) / abs(result), "\$ \\\\")
+println("\\hline")
+println("d. & \$", d_32, "\$ & \$", d_64, "\$ & \$", abs(result - d_32) / abs(result), "\$ & \$", abs(result - d_64) / abs(result), "\$ \\\\")
+println("\\hline")

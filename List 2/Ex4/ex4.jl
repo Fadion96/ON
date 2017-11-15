@@ -1,3 +1,5 @@
+# Author: Krzysztof Nowak
+
 using Polynomials
 a=[1, -210.0, 20615.0,-1256850.0,
       53327946.0,-1672280820.0, 40171771630.0, -756111184500.0,
@@ -14,13 +16,15 @@ P = Poly(a)
 p = poly([ i for i in 1.0:20.0])
 root = Polynomials.roots(P)
 reverse!(root)
-println(root)
+
+println("\\hline")
+println("k & \$ |P(z_{k})| \$ & \$ |p(z_{k})| \$ & \$ |z_{k} - k| \$ \\\\")
 for i in 1:20
-      println(abs(polyval(P,root[i])))
-      println(abs(polyval(p,root[i])))
-      println(abs(root[i]-i))
+      println("\\hline")
+      println(i," & \$", abs(polyval(P,root[i])), "\$ & \$", abs(polyval(p,root[i])), "\$ & \$", abs(root[i]-i), "\$ \\\\")
 end
-a2=[1, -210.0 - 2.0^23, 20615.0,-1256850.0,
+
+a2=[1, -210.0 - 2.0^-23, 20615.0,-1256850.0,
       53327946.0,-1672280820.0, 40171771630.0, -756111184500.0,
       11310276995381.0, -135585182899530.0,
       1307535010540395.0,     -10142299865511450.0,
@@ -33,7 +37,11 @@ reverse!(a2)
 P2 = Poly(a2)
 root2 = Polynomials.roots(P2)
 reverse!(root2)
-println(root2)
+
+println("\\hline")
+println("k & \$ |P(z_{k})| \$ \\\\")
 for i in 1:20
-      println(abs(polyval(P2,root2[i])))
+      println("\\hline")
+      println(i," & \$", abs(polyval(P2,root2[i])), "\$ \\\\")
 end
+println("\\hline")
